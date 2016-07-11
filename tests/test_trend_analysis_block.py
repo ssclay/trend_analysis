@@ -20,5 +20,6 @@ class TestExample(NIOBlockTestCase):
             self.last_notified[DEFAULT_TERMINAL][0].to_dict(), {
                 "trend": -1.0,
                 "trend_start": 10.0,
-                "trend_end": 1.0
+                "trend_end": 1.0,
+                "hello": "n.io"
             })
