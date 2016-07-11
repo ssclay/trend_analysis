@@ -14,9 +14,11 @@ class TrendAnalysis(Block):
     def process_signals(self, signals):
         for signal in signals:
             x = self.x(signal)
-            trend,trend_from = self.linreg(range(len(x)),x)
-            signal.trend=trend
-            signal.trend_from=trend_from
+            trend,trend_start = self.linreg(range(len(x)),x)
+            trend_end = [a*index + b for index in range(len(x))][len(x)-1]
+            signal.trend = trend
+            signal.trend_start = trend_start
+            signal.trend_end = trend_end
         self.notify_signals(signals)
     """
     Perform least-squares-fit of linear regression to a list of numeric values
