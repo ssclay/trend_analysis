@@ -8,7 +8,7 @@ class TestExample(NIOBlockTestCase):
 
     def test_process_signals(self):
         """Signals pass through block unmodified."""
-        blk = Example()
+        blk = TrendAnalysis()
         self.configure_block(blk, {
             "x": [10,9,8,7,6,5,4,3,2,1]
         })
