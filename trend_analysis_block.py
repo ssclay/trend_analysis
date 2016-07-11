@@ -10,7 +10,7 @@ class TrendAnalysis(Block):
 
     version = VersionProperty('0.1.0')
     x = Property(title='Data Set', default='')
-
+    
     def process_signals(self, signals):
         for signal in signals:
             x = self.x(signal)
