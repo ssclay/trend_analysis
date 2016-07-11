@@ -15,7 +15,7 @@ class TrendAnalysis(Block):
         for signal in signals:
             x = self.x(signal)
             trend,trend_start = self.linreg(range(len(x)),x)
-            trend_end = [a*index + b for index in range(len(x))][len(x)-1]
+            trend_end = [trend * index + trend_start for index in range(len(x))][len(x)-1]
             signal.trend = trend
             signal.trend_start = trend_start
             signal.trend_end = trend_end
