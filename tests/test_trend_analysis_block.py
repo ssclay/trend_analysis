@@ -10,7 +10,7 @@ class TestExample(NIOBlockTestCase):
         """Signals pass through block unmodified."""
         blk = Example()
         self.configure_block(blk, {
-        "x"= [10,9,8,7,6,5,4,3,2,1]
+            x = [10,9,8,7,6,5,4,3,2,1]
         })
         blk.start()
         blk.process_signals([Signal({"hello": "n.io"})])
