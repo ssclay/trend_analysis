@@ -9,11 +9,16 @@ class TestExample(NIOBlockTestCase):
     def test_process_signals(self):
         """Signals pass through block unmodified."""
         blk = Example()
-        self.configure_block(blk, {})
+        self.configure_block(blk, {
+            "x"= [10,9,8,7,6,5,4,3,2,1]
+        })
         blk.start()
         blk.process_signals([Signal({"hello": "n.io"})])
         blk.stop()
         self.assert_num_signals_notified(1)
         self.assertDictEqual(
-            self.last_notified[DEFAULT_TERMINAL][0].to_dict(),
-            {"hello": "n.io"})
+            self.last_notified[DEFAULT_TERMINAL][0].to_dict(), {
+                "trend": -1.0,
+                "trend_start": 10.0,
+                "trend_end: 1.0
+            })
