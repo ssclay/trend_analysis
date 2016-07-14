@@ -20,9 +20,9 @@ class TrendAnalysis(Block):
                 signal.trend = trend
                 signal.trend_start = trend_start
                 signal.trend_end = trend_end
-                self.notify_signals(signals)
             else:
                 self.logger.exception("Data Set must be a list")
+        self.notify_signals(signals)
     """
     Perform least-squares-fit of linear regression to a list of numeric values
     """
