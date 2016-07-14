@@ -10,7 +10,7 @@ class TestExample(NIOBlockTestCase):
     def test_process_signals(self):
         blk = TrendAnalysis()
         self.configure_block(blk, {
-            "x": "{{ $data }}"
+            "data": "{{ $data }}"
         })
         blk.start()
         blk.process_signals([
@@ -45,7 +45,7 @@ class TestExample(NIOBlockTestCase):
     def test_invalid_input(self):
         blk = TrendAnalysis()
         self.configure_block(blk, {
-            "x": "{{ $data }}"
+            "data": "{{ $data }}"
         })
         blk.logger = MagicMock()
         blk.start()

@@ -8,13 +8,13 @@ from nio.properties.version import VersionProperty
 @discoverable
 class TrendAnalysis(Block):
 
-    x = Property(title='Data Set', default='')
+    data = Property(title='Data Set', default='')
     version = VersionProperty('0.1.0')
     
     def process_signals(self, signals):
         for signal in signals:
-            if isinstance(self.x(signal), list):
-                x = self.x(signal)
+            if isinstance(self.data(signal), list):
+                x = self.data(signal)
                 trend,trend_start = self.linreg(range(len(x)),x)
                 trend_end = [trend * index + trend_start for index in range(len(x))][len(x)-1]
                 signal.trend = trend
