@@ -11,7 +11,7 @@ Consider a list of numeric values such as `[10,9,8,7,6,5,4,3,2,1]` where each Y 
 
 Properties
 --------------
-* **Data Set:** A list of numeric values
+* **Data Set:** A list of numeric values with length of at least 2.
 
 Dependencies
 ----------------
@@ -30,3 +30,5 @@ Output
 * **trend_start:** The first Y value of the trend line, coincides with first point in `Data Set`
 * **trend_end:** The last Y value of the trend line, coincides with the last point in `Data Set`
 * **trend:** The rate of change for trend line, per X axis unit
+
+If the input signal does not contain an acceptable list, and error is logged and no signals are notified.

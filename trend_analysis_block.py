@@ -12,21 +12,32 @@ class TrendAnalysis(Block):
     version = VersionProperty('0.1.0')
     
     def process_signals(self, signals):
+        # Create empty list of signals to notify
+        signals_to_notify = []
         for signal in signals:
-            if isinstance(self.data(signal), list):
+            if (isinstance(self.data(signal), list) and
+                    len(self.data(signal)) > 1):
+                # Make sure input is a list with at least two values
                 x = self.data(signal)
                 trend,trend_start = self.linreg(range(len(x)),x)
-                trend_end = [trend * index + trend_start for index in range(len(x))][len(x)-1]
+                trend_end = [
+                        trend * index + trend_start for index in range(len(x))
+                        ][len(x)-1]
+                # Create new signal attributes
                 signal.trend = trend
                 signal.trend_start = trend_start
                 signal.trend_end = trend_end
+                # Append signal to list signals_to_notify
+                signals_to_notify.append(signal)
             else:
-                self.logger.exception("Data Set must be a list")
-        self.notify_signals(signals)
-    """
-    Perform least-squares-fit of linear regression to a list of numeric values
-    """
+                # Raise exception, do not append signals_to_notify
+                self.logger.exception(
+                        "Data Set must be a list with length > 1")
+        self.notify_signals(signals_to_notify)
+
     def linreg(self, X, Y):
+        # Perform least-squares-fit of linear regression to a list of numeric
+        # values
         N = len(X)
         Sx = Sy = Sxx = Syy = Sxy = 0.0
         for x, y in zip(X, Y):
