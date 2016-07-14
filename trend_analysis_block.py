@@ -8,6 +8,7 @@ from nio.properties.version import VersionProperty
 @discoverable
 class TrendAnalysis(Block):
 
+
     data = Property(title='Data Set', default='')
     version = VersionProperty('0.1.0')
     
