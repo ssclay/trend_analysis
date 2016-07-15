@@ -6,7 +6,7 @@ This block performs linear regression analysis by least-squares-fitting a list o
 Example
 ===========
 
-Consider plotting a list of numeric values such as `[10,9,8,7,6,5,4,3,2,1]` where each Y value is separated by equal space (time) along X the axis. So at X0, Y = 10; at X1, Y = 9; and at X9, Y = 1. This block will output `{'trend_start': 10.0, 'trend_end': 1.0, 'trend': -1.0}`. The trend line can be plotted from `X0, trend_start` to `X9, trend_end` and the Y coordinate of the line will vary from adjacent points on the X axis by `trend`.
+Consider plotting a list of numeric values such as `[10,9,8,7,6,5,4,3,2,1]` where each item in the list is a Y coordinate separated by equal space (time) along X the axis. So at `X0, Y = 10`; at `X1, Y = 9`; and at `X9, Y = 1`. Using this data this block will calculate `{'trend_start': 10.0, 'trend_end': 1.0, 'trend': -1.0}`. The trend line can be plotted from `X0, trend_start` to `X9, trend_end` and the Y coordinate of the line will vary from adjacent points on the X axis by `trend`. In this perfectly linear example we would plot a line from `X0, 10.0` to `X9, 1.0`, and can estimate that the next data point will be approximately `trend_end - trend = 0.0`.
 
 Properties
 --------------
