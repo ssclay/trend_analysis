@@ -1,7 +1,7 @@
 Trend Analysis
 ==============
 
-This block performs linear regression analysis by least-squares-fitting a list of numeric data. The output is a line indicating trend for the data set.
+This block performs linear regression analysis by least-squares-fitting a list of numeric data. The output is two points on a line indicating trend for the data set, and the rate of change for the trend.
 
 Example
 ===========
