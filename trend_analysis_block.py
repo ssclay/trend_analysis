@@ -19,11 +19,11 @@ class TrendAnalysis(Block):
             if (isinstance(self.data(signal), list) and
                     len(self.data(signal)) > 1):
                 # Make sure input is a list with at least two values
-                x = self.data(signal)
-                trend,trend_start = self.linreg(range(len(x)),x)
+                d = self.data(signal)
+                trend,trend_start = self.linreg(range(len(d)),d)
                 trend_end = [
-                        trend * index + trend_start for index in range(len(x))
-                        ][len(x)-1]
+                        trend * index + trend_start for index in range(len(d))
+                        ][len(d)-1]
                 # Create new signal attributes
                 signal.trend = trend
                 signal.trend_start = trend_start
