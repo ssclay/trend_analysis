@@ -33,7 +33,8 @@ class TrendAnalysis(Block):
             else:
                 # Raise exception, do not append signals_to_notify
                 self.logger.exception(
-                        "Data Set must be a list with length > 1")
+                        "Data Set must be a list with length > 1"
+                        )
         self.notify_signals(signals_to_notify)
 
     def linreg(self, X, Y):
