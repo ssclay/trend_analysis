@@ -21,20 +21,20 @@ class TrendAnalysis(Block):
                     len(self.data(signal)) > 1):
                 # Make sure input is a list with at least two values
                 dd = self.data(signal)
-				# Plot trend line
+                # Plot trend line
                 trend,trend_start = self.linreg(range(len(dd)),dd)
-				trend_d = [
+                trend_d = [
                         trend * index + trend_start for index in range(len(dd))
                         ]
                 trend_end = trend_d[len(dd)-1]
-				# Calculate standard error
-				error = [trend_d - dd for trend_d, dd in zip(trend_d, dd)]
-				std_error = statistics.stdev(error)
+                # Calculate standard error
+                error = [trend_d - dd for trend_d, dd in zip(trend_d, dd)]
+                std_error = statistics.stdev(error)
                 # Create new signal attributes
                 signal.trend = trend
                 signal.trend_start = trend_start
                 signal.trend_end = trend_end
-				signal.std_error = std_error
+                signal.std_error = std_error
                 # Append signal to list signals_to_notify
                 signals_to_notify.append(signal)
             else:
