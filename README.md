@@ -29,6 +29,7 @@ Output
 * **trend_start:** The first Y value of the trend line, coincides with first point in `Data Set`
 * **trend_end:** The last Y value of the trend line, coincides with the last point in `Data Set`
 * **trend:** The rate of change for trend line, per X axis unit
+* **std_error:** Sample standard deviation of trend error for `Data Set`
 * All attributes of input signal
 
 If the input signal does not contain an acceptable list, and error is logged and no signals are notified.
