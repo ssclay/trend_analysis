@@ -35,7 +35,7 @@ class TestExample(NIOBlockTestCase):
                 "trend_start": 2.8,
                 "trend_end": 4.4,
                 "data": [3,3,4,3,5],
-                "std_error": 0.6324555320336758
+                "std_error":  0.33466401061363016
                 })
         self.assertDictEqual(
             self.last_notified[DEFAULT_TERMINAL][2].to_dict(), {

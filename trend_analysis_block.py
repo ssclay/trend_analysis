@@ -28,7 +28,7 @@ class TrendAnalysis(Block):
                         ]
                 trend_end = trend_d[len(dd)-1]
                 # Calculate standard error
-                error = [trend_d - dd for trend_d, dd in zip(trend_d, dd)]
+                error = [abs(trend_d - dd) for trend_d, dd in zip(trend_d, dd)]
                 std_error = statistics.stdev(error)
                 # Create new signal attributes
                 signal.trend = trend
