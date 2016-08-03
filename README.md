@@ -1,12 +1,17 @@
 Trend Analysis
 ==============
 
-This block performs linear regression analysis by least-squares-fitting a list of numeric data. The output is two points on a line indicating trend for the data set, and the rate of change for the trend.
+This block performs linear trend analysis on a set of numeric data. The method used is a least-square line fit, which will plot a line so that the sum of the squares of all points' error (vertical offsets, or residuals) is minimized. In such methods of linear regression, the solution contains the Y-Intercept and Slope values, and in this block some additional data and statistics are computed.
 
 Example
 ===========
 
-Consider plotting a list of numeric values such as `[10,9,8,7,6,5,4,3,2,1]` where each item in the list is a Y coordinate separated by equal space (time) along X the axis. So at `X0, Y = 10`; at `X1, Y = 9`; and at `X9, Y = 1`. Using this data this block will calculate `{'trend_start': 10.0, 'trend_end': 1.0, 'trend': -1.0}`. The trend line can be plotted from `X0, trend_start` to `X9, trend_end` and the Y coordinate of the line will vary from adjacent points on the X axis by `trend`. In this perfectly linear example we would plot a line from `X0, 10.0` to `X9, 1.0`, and can estimate that the next data point will be approximately `trend_end + trend = 0.0`.
+Consider a list of data such as `[6, 6, 7, 6, 7, 7, 8, 6, 8, 7]` contained in an incoming signal, where each value is a parameter's value (Y axis) at a time interval (X axis). This block first calculates the Y-intercept and Slope values, and then iterates through the data to calculate the error of that trend for each data point, and finally the value of the trend at the end of the data set. In this example we get the following (rounded here for readability):
+
+`{'trend_start': 6.145, 'trend_end': 7.455, 'trend': 0.145, 'std_error': 0.654}`
+
+From this output we understand that the trend line for the data set is drawn from 6.145 at X0, and changes by 0.145 at each point on the X axis, ending at 7.455. The standard error, 0.654, indicates how closely the line fits the data, returning 0.0 when the data set is perfectly linear.
+
 
 Properties
 --------------
@@ -26,9 +31,10 @@ Any list of signals.
 
 Output
 ---------
-* **trend_start:** The first Y value of the trend line, coincides with first point in `Data Set`
+* **trend_start:** The first Y value of the trend line, this is the Y-Intercept value
 * **trend_end:** The last Y value of the trend line, coincides with the last point in `Data Set`
-* **trend:** The rate of change for trend line, per X axis unit
+* **trend:** The rate of change for trend line, Slope, per X axis unit
+* **std_error:** Standard deviation (sample) of trend error
 * All attributes of input signal
 
 If the input signal does not contain an acceptable list, and error is logged and no signals are notified.

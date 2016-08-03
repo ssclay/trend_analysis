@@ -3,6 +3,7 @@ from nio.signal.base import Signal
 from nio.util.discovery import discoverable
 from nio.properties import Property
 from nio.properties.version import VersionProperty
+import statistics
 
 
 @discoverable
@@ -19,15 +20,21 @@ class TrendAnalysis(Block):
             if (isinstance(self.data(signal), list) and
                     len(self.data(signal)) > 1):
                 # Make sure input is a list with at least two values
-                d = self.data(signal)
-                trend,trend_start = self.linreg(range(len(d)),d)
-                trend_end = [
-                        trend * index + trend_start for index in range(len(d))
-                        ][len(d)-1]
+                dd = self.data(signal)
+                # Plot trend line
+                trend,trend_start = self.linreg(range(len(dd)),dd)
+                trend_d = [
+                        trend * index + trend_start for index in range(len(dd))
+                        ]
+                trend_end = trend_d[len(dd)-1]
+                # Calculate standard error
+                error = [trend_d - dd for trend_d, dd in zip(trend_d, dd)]
+                std_error = statistics.stdev(error)
                 # Create new signal attributes
                 signal.trend = trend
                 signal.trend_start = trend_start
                 signal.trend_end = trend_end
+                signal.std_error = std_error
                 # Append signal to list signals_to_notify
                 signals_to_notify.append(signal)
             else:

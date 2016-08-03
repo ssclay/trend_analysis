@@ -16,8 +16,8 @@ class TestExample(NIOBlockTestCase):
         blk.start()
         blk.process_signals([
             Signal({"data": [5,4,3,2,1]}),
-            Signal({"data": [1,2,3,4,5]}),
-            Signal({"data": [3,3,3,3,3], "group": ""})
+            Signal({"data": [3,3,4,3,5]}),
+            Signal({"data": [3,3,3,3,3], "group": "null"})
             ])
         blk.stop()
         self.assert_num_signals_notified(3)
@@ -26,14 +26,16 @@ class TestExample(NIOBlockTestCase):
                 "trend": -1.0,
                 "trend_start": 5.0,
                 "trend_end": 1.0,
-                "data": [5,4,3,2,1]
+                "data": [5,4,3,2,1],
+                "std_error": 0.0
                 })
         self.assertDictEqual(
             self.last_notified[DEFAULT_TERMINAL][1].to_dict(), {
-                "trend": 1.0,
-                "trend_start": 1.0,
-                "trend_end": 5.0,
-                "data": [1,2,3,4,5]
+                "trend": 0.4,
+                "trend_start": 2.8,
+                "trend_end": 4.4,
+                "data": [3,3,4,3,5],
+                "std_error": 0.6324555320336758
                 })
         self.assertDictEqual(
             self.last_notified[DEFAULT_TERMINAL][2].to_dict(), {
@@ -41,7 +43,8 @@ class TestExample(NIOBlockTestCase):
                 "trend_start": 3.0,
                 "trend_end": 3.0,
                 "data": [3,3,3,3,3],
-                "group": ""
+                "std_error": 0.0,
+                "group": "null"
                 })
 
     def test_string_input(self):
