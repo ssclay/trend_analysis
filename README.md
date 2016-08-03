@@ -6,7 +6,7 @@ This block performs linear trend analysis on a set of numeric data. The method u
 Example
 ===========
 
-Consider a list of data such as `[6, 6, 7, 6, 7, 7, 8, 6, 8, 7]` contained in an incoming signal, where each value is a parameter's value (Y axis) at a time interval (X axis). This block first calculates the Y-intercept and Slope values, and then iterates through the data to calculate the error of that trend for each data point, and finally the value of the trend at the end of the data set. In this example we get the following (rounded here for readability):
+Consider a list of data such as `[6, 6, 7, 6, 7, 7, 8, 6, 8, 7]` where each value is a parameter's value (Y axis) at a time interval (X axis). This block first calculates the Y-intercept and Slope values, and then iterates through the data to calculate the error of that trend for each data point, and finally the Y value of the trend at the end of the data set. In this example we get the following results (rounded here for readability):
 
 `{'trend_start': 6.145, 'trend_end': 7.455, 'trend': 0.145, 'std_error': 0.654}`
 
@@ -34,7 +34,7 @@ Output
 * **trend_start:** The first Y value of the trend line, this is the Y-Intercept value
 * **trend_end:** The last Y value of the trend line, coincides with the last point in `Data Set`
 * **trend:** The rate of change for trend line, Slope, per X axis unit
-* **std_error:** Standard deviation (sample) of trend error
+* **std_error:** Standard deviation (sample) of trend error (residuals)
 * All attributes of input signal
 
 If the input signal does not contain an acceptable list, and error is logged and no signals are notified.
