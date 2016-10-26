@@ -33,10 +33,10 @@ Any list of signals.
 
 Output
 ---------
-* **trend_start:** The first Y value of the trend line, this is the Y-Intercept value
-* **trend_end:** The last Y value of the trend line, coincides with the last point in data
-* **trend:** The rate of change for trend line, Slope, per X axis unit
-* **std_error:** Standard deviation (sample) of absolute trend error (residual) for each point in data
+* `trend_start` The first Y value of the trend line, this is the Y-Intercept value
+* `trend_end` The last Y value of the trend line, coincides with the last point in data
+* `trend` The rate of change for trend line, Slope, per X axis unit
+* `std_error` Standard deviation (sample) of absolute trend error (residual) for each point in data
 * All attributes of input signal
 
 If the input signal does not contain an acceptable list, and error is logged and no signals are notified.
