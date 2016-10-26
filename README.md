@@ -10,7 +10,7 @@ Consider a list of data such as `[6, 6, 7, 6, 7, 7, 8, 6, 8, 7]` where each valu
 
 `{'trend_start': 6.145, 'trend_end': 7.455, 'trend': 0.145, 'std_error': 0.346}`
 
-![trend chart](https://raw.githubusercontent.com/tyoungNIO/trend_analysis/e906a2bf0509cc802816c2b41612250fee3fb25a/trend_analysis.png)
+![trend chart](https://github.com/tyoungNIO/trend_analysis/blob/nio2/trend_analysis.png)
 
 From this output we understand that the trend line for the data set is drawn from `6.145` at `X0`, and the rate of change is `0.145` per point on the X axis, ending at `7.455` at `X9`. The standard error of `0.346` indicates how closely the line fits the data, returning `0.0` when the data set is perfectly linear.
 
