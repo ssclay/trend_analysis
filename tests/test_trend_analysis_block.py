@@ -60,7 +60,7 @@ class TestExample(NIOBlockTestCase):
             ])
         blk.stop()
         self.assert_num_signals_notified(0)
-        blk.logger.exception.assert_called_once_with(
+        blk.logger.error.assert_called_once_with(
             "Data Set must be a list with length > 1")
             
     def test_short_input(self):
@@ -76,5 +76,5 @@ class TestExample(NIOBlockTestCase):
             ])
         blk.stop()
         self.assert_num_signals_notified(0)
-        blk.logger.exception.assert_called_once_with(
+        blk.logger.error.assert_called_once_with(
             "Data Set must be a list with length > 1")

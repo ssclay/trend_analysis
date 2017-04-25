@@ -39,7 +39,7 @@ class TrendAnalysis(Block):
                 signals_to_notify.append(signal)
             else:
                 # Raise exception, do not append signals_to_notify
-                self.logger.exception(
+                self.logger.error(
                         "Data Set must be a list with length > 1"
                         )
         self.notify_signals(signals_to_notify)
